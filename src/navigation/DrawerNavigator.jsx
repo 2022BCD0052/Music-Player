@@ -14,7 +14,7 @@ const DrawerNavigator = () => {
     // drawerType :"slide",
     drawerStyle: {
       backgroundColor: colors.background,
-      width: 200,
+      width: 250,
       },
   }}
   drawerContent={(props)=><CustomeDrawerContent{...props}/>}
