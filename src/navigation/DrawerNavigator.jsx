@@ -20,8 +20,8 @@ const DrawerNavigator = () => {
   drawerContent={(props)=><CustomeDrawerContent{...props}/>}
 
    >
-    <Drawer.Screen name="Home" component={StackNavigation} />
-   </Drawer.Navigator>
+      <Drawer.Screen name="Home" component={StackNavigation} />
+      </Drawer.Navigator>
   )
 }
 

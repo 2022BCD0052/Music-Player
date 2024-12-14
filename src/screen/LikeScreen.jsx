@@ -5,7 +5,7 @@ import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import { FlatList } from "react-native-gesture-handler";
 import SongCard from "../components/SongCard";
 import { colors } from "./constants/colors";
-import { FontSize, spacing } from "./constants/dimensions";
+import { FontSize, iconSizes, spacing } from "./constants/dimensions";
 import { fontFamilies } from "./constants/fonts";
 
 const LikeScreen = () => {

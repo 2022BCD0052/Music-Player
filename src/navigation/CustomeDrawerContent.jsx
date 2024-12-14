@@ -9,14 +9,17 @@ import { colors } from '../screen/constants/colors';
 import { FontSize, iconSizes, spacing } from '../screen/constants/dimensions';
 import { fontFamilies } from '../screen/constants/fonts';
 
-const CustomDrawerContent = ({props}) => {
+const CustomDrawerContent = (props) => {
   const isDarkMode = true;
+  const toggleDrawer = ()=>{
+    props.navigation.toggleDrawer();
+  }
 
   return (
     <DrawerContentScrollView style={styles.container}>
       {/* Header Icons */}
       <View style={styles.headerIconContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={toggleDrawer}>
           <AntDesign name="close" size={iconSizes.lg} color={colors.iconPrimary} />
         </TouchableOpacity>
         <TouchableOpacity>
@@ -30,32 +33,32 @@ const CustomDrawerContent = ({props}) => {
 
       {/* Drawer Items */}
       <View style={styles.drawerIconContainer}>
-        <DrawerItem
+      <DrawerItem
           label="Profile"
           icon={() => (
             <FontAwesome name="user" size={iconSizes.md} color={colors.iconPrimary} />
           )}
           labelStyle={styles.labelStyle}
           style={styles.drawerItem}
+          onPress={() => props.navigation.navigate('Profile')}
         />
         <DrawerItem
           label="Liked Songs"
           icon={() => (
-            <MaterialIcons name="favorite" size={iconSizes.md} color={colors.iconPrimary}  />
+            <MaterialIcons name="favorite" size={iconSizes.md} color={colors.iconPrimary} />
           )}
           labelStyle={styles.labelStyle}
           style={styles.drawerItem}
-          onPress={()=>{
-            props.navigation.navigate('LIKE_SCREEN')
-          }}
+          onPress={() => props.navigation.navigate('Home', { screen: 'LIKE_SCREEN' })} // Nested StackNavigator screen
         />
         <DrawerItem
           label="Language"
-          icon={() => ( 
+          icon={() => (
             <MaterialIcons name="language" size={iconSizes.md} color={colors.iconPrimary} />
           )}
           labelStyle={styles.labelStyle}
           style={styles.drawerItem}
+          onPress={() => props.navigation.navigate('Language')}
         />
         <DrawerItem
           label="Contact Us"
@@ -64,14 +67,16 @@ const CustomDrawerContent = ({props}) => {
           )}
           labelStyle={styles.labelStyle}
           style={styles.drawerItem}
+          onPress={() => props.navigation.navigate('ContactUs')}
         />
-        <DrawerItem
+          <DrawerItem
           label="FAQs"
           icon={() => (
             <AntDesign name="questioncircle" size={iconSizes.md} color={colors.iconPrimary} />
           )}
           labelStyle={styles.labelStyle}
           style={styles.drawerItem}
+          onPress={() => props.navigation.navigate('FAQs')}
         />
         <DrawerItem
           label="Settings"
@@ -80,6 +85,7 @@ const CustomDrawerContent = ({props}) => {
           )}
           labelStyle={styles.labelStyle}
           style={styles.drawerItem}
+          onPress={() => props.navigation.navigate('Settings')}
         />
       </View>
     </DrawerContentScrollView>
