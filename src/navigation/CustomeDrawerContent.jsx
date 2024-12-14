@@ -23,6 +23,10 @@ const CustomeDrawerContent = (props) => {
 
         </View>
 
+        <View>
+          
+        </View>
+
       </DrawerContentScrollView>
   )
 }
