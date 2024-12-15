@@ -18,11 +18,12 @@ const imageUrl =
     artistStyle,
     albumStyle,
     durationStyle,
+    item
   }) => {
     return (
       <TouchableOpacity style={[styles.container, containerStyle]}>
         {/* Image Section */}
-        <Image source={{ uri: imageUrl }} style={[styles.image, imageStyle]} />
+        <Image source={{ uri: item.artwork }} style={[styles.image, imageStyle]} />
         <View style={[styles.overlay, overlayStyle]} />
   
         {/* Play Button */}
@@ -34,15 +35,15 @@ const imageUrl =
         <View style={[styles.textContainer, textContainerStyle]}>
           <View style={styles.textLeft}>
             <Text style={[styles.title, titleStyle]} numberOfLines={1} ellipsizeMode="tail">
-              Song Title That Might Be Very Long and Needs Truncation
+            {item.title}
             </Text>
             <Text style={[styles.artist, artistStyle]} numberOfLines={1} ellipsizeMode="tail">
-              Artist Name That Might Be Too Long
+            {item.artist}
             </Text>
           </View>
           <View style={styles.textRight}>
-            <Text style={[styles.album, albumStyle]}>Album Name</Text>
-            <Text style={[styles.duration, durationStyle]}>3:45</Text>
+            <Text style={[styles.album, albumStyle]}>{item.album}</Text>
+            <Text style={[styles.duration, durationStyle]}>{`${Math.floor(item.duration / 60)}:${item.duration % 60}`}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
   container: {
     width: 200,
     height: 200,
+    backgroundColor : '#00000',
     borderRadius: 15,
     overflow: "hidden",
     position: "relative",
@@ -63,12 +65,13 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
-    elevation: 10,
+    // elevation: 10,
+
   },
   image: {
-    width: "100%",
+    width: 200,
     height: "70%",
-    resizeMode: "cover",
+    resizeMode: "contain",
   },
   overlay: {
     position: "absolute",

@@ -5,25 +5,21 @@ import { FontSize, spacing } from "../screen/constants/dimensions";
 import { colors } from "../screen/constants/colors";
 import { fontFamilies } from "../screen/constants/fonts";
 
-const SongCategory = () => {
+const SongCategory = ({item}) => {
   return (
     <View>
-      <Text style={styles.headingText}>Recommended For You</Text>
+      <Text style={styles.headingText}>{item.title}</Text>
       <FlatList
-        data={[1, 2, 3, 4, 5, 7, 8, 9, 10]}
-        renderItem={SongCard}
-
-        keyExtractor={(item) => item.toString()}
-        horizontal={true}
+        data={item.songs}
+        renderItem={({ item }) => <SongCard item={item} />}
+        keyExtractor={(item, index) => index.toString()}
+        horizontal
         showsHorizontalScrollIndicator={false}
-        ItemSeparatorComponent={<View style={{ marginHorizontal: 5, }}
-        />}
+        ItemSeparatorComponent={<View style={{ marginHorizontal: 5 }} />}
         style={{
-         marginHorizontal: 3,
+          marginHorizontal: 3,
         }}
       />
-      
-      
     </View>
   );
 };

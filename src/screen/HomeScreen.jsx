@@ -6,22 +6,20 @@ import { fontFamilies } from "./constants/fonts";
 import { FontSize, spacing } from "./constants/dimensions";
 import SongCategory from "../components/SongCategory";
 import FloatingPlaperC from "../components/FloatingPlaperComponent";
+import { songWithCategory } from "../data/songWithCategory";
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
      <Header/>
-
-     <FlatList
-     data={[1,2,3]}
-     renderItem={({item}) => (
-      <SongCategory />
-      )}
-      keyExtractor={(item) => item.toString()}
-      contentContainerStyle={{
-        paddingBottom:400,
-      }}
      
-     />
+     <FlatList
+        data={songWithCategory}
+        renderItem={({ item }) => <SongCategory item={item} />}
+        keyExtractor={(item, index) => index.toString()}
+        contentContainerStyle={{
+          paddingBottom: 400,
+        }}
+      />
      <FloatingPlaperC/>
       </View>
   );
